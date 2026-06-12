@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторная работа №6: CSS Grid</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #1e1e2e;
+            color: #ddd;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            color: #00ff88;
+        }
+        section {
+            background: #2a2a3a;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+        .demo {
+            background: #1e1e2e;
+            padding: 15px;
+            border: 1px solid #444;
+            margin: 15px 0;
+        }
+        .grid-box {
+            display: grid;
+            background: #333;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .grid-box div {
+            background: #e74c3c;
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .note {
+            background: #0f0f1a;
+            padding: 10px;
+            border-left: 4px solid #00ff88;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid #555;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background: #00ff88;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Лабораторная работа №6</h1>
+    <p>Тема: CSS Grid Layout — двумерная сетка</p>
+
+    <!-- 1. display: grid -->
+    <section>
+        <h2>1️⃣ display: grid</h2>
+        <div class="grid-box" style="grid-template-columns: 1fr 1fr 1fr;">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </div>
+        <div class="note">✔ <code>display: grid;</code> + <code>grid-template-columns: 1fr 1fr 1fr;</code> — три равные колонки</div>
+    </section>
+
+    <!-- 2. grid-template-rows + gap -->
+    <section>
+        <h2>2️⃣ Высота строк и отступы</h2>
+        <div class="grid-box" style="grid-template-columns: 1fr 1fr; grid-template-rows: 80px 80px; gap: 15px;">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div class="note">✔ <code>grid-template-rows: 80px 80px;</code> — высота строк 80px.<br>
+        ✔ <code>gap: 15px;</code> — отступы между ячейками видны как тёмные промежутки.</div>
+    </section>
+
+    <!-- 3. repeat() -->
+    <section>
+        <h2>3️⃣ Функция repeat()</h2>
+        <div class="grid-box" style="grid-template-columns: repeat(4, 1fr); gap: 10px;">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div class="note">✔ <code>repeat(4, 1fr)</code> — 4 одинаковые колонки, код короче.</div>
+    </section>
+
+    <!-- 4. minmax() -->
+    <section>
+        <h2>4️⃣ Функция minmax()</h2>
+        <div class="grid-box" style="grid-template-columns: minmax(150px, 1fr) 1fr 1fr; gap: 10px;">
+            <div>minmax(150px, 1fr)<br>Не уже 150px</div>
+            <div>2</div>
+            <div>3</div>
+        </div>
+        <div class="note">✔ Первая колонка <strong>не уже 150px</strong>, но может растягиваться. Уменьши окно — увидишь.</div>
+    </section>
+
+    <!-- 5. grid-column / grid-row (размещение) -->
+    <section>
+        <h2>5️⃣ Размещение элементов: grid-column / grid-row</h2>
+        <div class="grid-box" style="grid-template-columns: repeat(3, 1fr); grid-auto-rows: 70px; gap: 10px;">
+            <div style="grid-column: 1 / 3; background: #3498db;">grid-column: 1 / 3<br>Занимает 2 колонки</div>
+            <div>2</div>
+            <div style="grid-row: 2 / 4; background: #2ecc71;">grid-row: 2 / 4<br>Занимает 2 строки</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+        </div>
+        <div class="note">✔ Синяя ячейка растянута на 2 колонки. Зелёная — на 2 строки.</div>
+    </section>
+
+    <!-- 6. grid-template-areas (визуальный макет) -->
+    <section>
+        <h2>6️⃣ Именованные области: grid-template-areas</h2>
+        <style>
+            .area-grid {
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                grid-template-rows: auto 1fr auto;
+                grid-template-areas: 
+                    "header header"
+                    "sidebar main"
+                    "footer footer";
+                gap: 10px;
+                background: #333;
+                padding: 10px;
+            }
+            .area-grid .h { grid-area: header; background: #3498db; padding: 20px; text-align: center; }
+            .area-grid .s { grid-area: sidebar; background: #2ecc71; padding: 20px; text-align: center; }
+            .area-grid .m { grid-area: main; background: #e74c3c; padding: 20px; text-align: center; }
+            .area-grid .f { grid-area: footer; background: #f39c12; padding: 20px; text-align: center; }
+        </style>
+        <div class="area-grid">
+            <div class="h">ШАПКА</div>
+            <div class="s">САЙДБАР</div>
+            <div class="m">ОСНОВНОЙ КОНТЕНТ</div>
+            <div class="f">ПОДВАЛ</div>
+        </div>
+        <div class="note">✔ <code>grid-template-areas</code> рисует макет прямо в CSS: "header header", "sidebar main", "footer footer".</div>
+    </section>
+
+    <!-- 7. align-items / justify-items -->
+    <section>
+        <h2>7️⃣ Выравнивание внутри ячеек</h2>
+        <div class="grid-box" style="grid-template-columns: 1fr 1fr; height: 150px; align-items: center; justify-items: center;">
+            <div>1<br>по центру</div>
+            <div>2<br>по центру</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div class="note">✔ <code>align-items: center;</code> — по вертикали. <code>justify-items: center;</code> — по горизонтали.</div>
+    </section>
+
+    <!-- 8. justify-content / align-content -->
+    <section>
+        <h2>8️⃣ Выравнивание всей сетки в контейнере</h2>
+        <div class="grid-box" style="grid-template-columns: 100px 100px; grid-template-rows: 100px 100px; justify-content: center; align-content: center; height: 250px; gap: 10px;">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+        <div class="note">✔ <code>justify-content: center; align-content: center;</code> — сетка по центру контейнера.</div>
+    </section>
+
+    <!-- 9. auto-fill / auto-fit -->
+    <section>
+        <h2>9️⃣ Автозаполнение: auto-fill</h2>
+        <div class="grid-box" style="grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px;">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </div>
+        <div class="note">✔ <code>repeat(auto-fill, minmax(100px, 1fr))</code> — колонки сами подстраиваются под ширину экрана.</div>
+    </section>
+
+    <!-- 10. Шпаргалка -->
+    <section>
+        <h2>📌 Шпаргалка по Grid</h2>
+        <table>
+            <tr><th>Свойство</th><th>Пример</th><th>Что делает</th></tr>
+            <tr><td>display</td><td>grid / inline-grid</td><td>Включает Grid</td></tr>
+            <tr><td>grid-template-columns</td><td>1fr 1fr 1fr</td><td>Колонки</td></tr>
+            <tr><td>grid-template-rows</td><td>100px 200px</td><td>Строки</td></tr>
+            <tr><td>gap</td><td>10px / 10px 20px</td><td>Отступы между ячейками</td></tr>
+            <tr><td>grid-column</td><td>1 / 3</td><td>Сколько колонок занимает</td></tr>
+            <tr><td>grid-row</td><td>2 / 4</td><td>Сколько строк занимает</td></tr>
+            <tr><td>grid-template-areas</td><td>"header header"</td><td>Визуальный макет</td></tr>
+            <tr><td>align-items / justify-items</td><td>center / start / end</td><td>Выравнивание внутри ячеек</td></tr>
+            <tr><td>justify-content / align-content</td><td>center / space-between</td><td>Выравнивание всей сетки</td></tr>
+        </table>
+    </section>
+</div>
+</body>
+</html>

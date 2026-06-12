@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адаптивная вёрстка (Grid)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f0f0;
+            padding: 20px;
+        }
+        .wrapper {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            background: white;
+        }
+        .header, .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .nav {
+            background: #27ae60;
+            text-align: center;
+            padding: 15px;
+        }
+        .nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .grid-item {
+            background: #ecf0f1;
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #bdc3c7;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .grid-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .grid-item p {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        /* Планшеты */
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Телефоны */
+        @media (max-width: 480px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">Шапка (логотип)</div>
+        <div class="nav">
+            <a href="#">Главная</a>
+            <a href="#">О нас</a>
+            <a href="#">Услуги</a>
+            <a href="#">Портфолио</a>
+            <a href="#">Блог</a>
+            <a href="#">Контакты</a>
+        </div>
+        <div class="grid">
+            <!-- Блок 1: изображение ауди.jpg -->
+            <div class="grid-item">
+                <img src="ауди.jpg" alt="Ауди">
+                <p>Изображение Audi</p>
+            </div>
+            <div class="grid-item">4</div>
+            <!-- Блок 5: произвольный текст -->
+            <div class="grid-item">
+                <p>Это пример текста, который может быть размещён в любом блоке сетки. Здесь может быть описание услуги, новости или другая информация.</p>
+            </div>
+            <div class="grid-item">2</div>
+            <div class="grid-item">3</div>
+            <div class="grid-item">6</div>
+        </div>
+        <div class="footer">© 2026 Адаптивная вёрстка (Grid)</div>
+    </div>
+</body>
+</html>
