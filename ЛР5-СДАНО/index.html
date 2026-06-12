@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа №5: Блочная модель и Flexbox</title>
+    <style>
+        /* ================================================
+           ОБЩИЕ СТИЛИ (для оформления страницы)
+        ================================================ */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1e1e2e;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #00ff88;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+        }
+        section {
+            background: #2a2a3a;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        h2 {
+            color: #00ff88;
+            border-left: 4px solid #00ff88;
+            padding-left: 15px;
+            margin-top: 0;
+        }
+        h3 {
+            color: #00cc88;
+            margin-bottom: 10px;
+        }
+        .demo-box {
+            background: #1e1e2e;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #444;
+        }
+        hr {
+            border-color: #444;
+            margin: 20px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            border-top: 1px solid #333;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📦 Лабораторная работа №5</h1>
+    <div class="subtitle">Тема: Блочная модель и Flexbox</div>
+
+    <!-- ================================================
+         ЧАСТЬ 1. БЛОЧНАЯ МОДЕЛЬ (Box Model)
+    ================================================ -->
+    <section>
+        <h2>📐 1. Блочная модель в CSS</h2>
+        <p>Каждый HTML-элемент — это прямоугольник. Блочная модель описывает, как рассчитывается его размер с учётом:
+            <code>content</code> (содержимое), <code>padding</code> (внутренний отступ),
+            <code>border</code> (рамка), <code>margin</code> (внешний отступ).
+        </p>
+
+        <div class="demo-box">
+            <h3>🎯 Практический пример</h3>
+            <div style="
+                background-color: #3498db;
+                width: 200px;
+                height: 100px;
+                padding: 20px;
+                border: 5px solid #f1c40f;
+                margin: 30px;
+                color: white;
+                text-align: center;
+                line-height: 100px;
+                border-radius: 8px;
+            ">
+                Я — блок
+            </div>
+            <p><strong>Разбор:</strong></p>
+            <ul>
+                <li><code>width: 200px; height: 100px;</code> — размер содержимого</li>
+                <li><code>padding: 20px;</code> — добавляет 20px отступов внутри со всех сторон</li>
+                <li><code>border: 5px;</code> — добавляет рамку толщиной 5px</li>
+                <li><code>margin: 30px;</code> — создаёт отступ в 30px от соседних элементов</li>
+                <li><strong>Итоговая ширина блока = 200 + 20*2 + 5*2 = 250px</strong> (без учёта margin)</li>
+            </ul>
+            <p><em>💡 Свойство <code>box-sizing: border-box</code> упрощает расчёты, заставляя width/height включать padding и border.</em></p>
+        </div>
+    </section>
+
+    <!-- ================================================
+         ЧАСТЬ 2. FLEXBOX (все основные свойства)
+    ================================================ -->
+    <section>
+        <h2>🧩 2. Изучение Flexbox на практике</h2>
+        <p><strong>Flexbox</strong> — это технология для удобного выравнивания и распределения элементов внутри контейнера.</p>
+
+        <!-- Свойство 1: display: flex -->
+        <div class="demo-box">
+            <h3>1️⃣ display: flex</h3>
+            <p>Контейнер становится flex-контейнером, а его дочерние элементы — flex-элементами.</p>
+            <div style="display: flex; background: #333; padding: 10px; gap: 10px; border-radius: 8px;">
+                <div style="background: #e74c3c; padding: 10px;">1</div>
+                <div style="background: #2ecc71; padding: 10px;">2</div>
+                <div style="background: #3498db; padding: 10px;">3</div>
+            </div>
+        </div>
+
+        <!-- Свойство 2: flex-direction -->
+        <div class="demo-box">
+            <h3>2️⃣ flex-direction</h3>
+            <p>Определяет направление главной оси: <code>row</code> (строка) или <code>column</code> (столбец).</p>
+            <div style="display: flex; flex-direction: row; gap: 10px; background: #333; padding: 10px; margin-bottom: 15px;">
+                <div style="background: #e67e22; padding: 10px;">row 1</div>
+                <div style="background: #e67e22; padding: 10px;">row 2</div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; background: #333; padding: 10px;">
+                <div style="background: #1abc9c; padding: 10px;">column 1</div>
+                <div style="background: #1abc9c; padding: 10px;">column 2</div>
+            </div>
+        </div>
+
+        <!-- Свойство 3: justify-content (выравнивание по главной оси) -->
+        <div class="demo-box">
+            <h3>3️⃣ justify-content</h3>
+            <p>Управляет выравниванием элементов вдоль главной оси.</p>
+            <p><strong>center</strong> — по центру:</p>
+            <div style="display: flex; justify-content: center; gap: 10px; background: #333; padding: 10px;">
+                <div style="background: #9b59b6; padding: 10px;">A</div>
+                <div style="background: #9b59b6; padding: 10px;">B</div>
+            </div>
+            <p><strong>space-between</strong> — равномерное распределение (первый в начале, последний в конце):</p>
+            <div style="display: flex; justify-content: space-between; background: #333; padding: 10px;">
+                <div style="background: #e84393; padding: 10px;">1</div>
+                <div style="background: #e84393; padding: 10px;">2</div>
+                <div style="background: #e84393; padding: 10px;">3</div>
+            </div>
+            <p><strong>space-around</strong> — равномерные отступы вокруг каждого элемента:</p>
+            <div style="display: flex; justify-content: space-around; background: #333; padding: 10px;">
+                <div style="background: #f39c12; padding: 10px;">X</div>
+                <div style="background: #f39c12; padding: 10px;">Y</div>
+                <div style="background: #f39c12; padding: 10px;">Z</div>
+            </div>
+        </div>
+
+        <!-- Свойство 4: align-items (выравнивание по поперечной оси) -->
+        <div class="demo-box">
+            <h3>4️⃣ align-items</h3>
+            <p>Выравнивает элементы по поперечной оси (по высоте).</p>
+            <div style="display: flex; align-items: center; gap: 10px; background: #333; padding: 10px; height: 100px;">
+                <div style="background: #16a085; padding: 10px;">Высота 1</div>
+                <div style="background: #16a085; padding: 20px;">Высота 2</div>
+                <div style="background: #16a085; padding: 30px;">Высота 3</div>
+            </div>
+            <p><small>Все элементы выровнены по центру родителя по вертикали (<code>align-items: center</code>).</small></p>
+        </div>
+
+        <!-- Свойство 5: flex-wrap -->
+        <div class="demo-box">
+            <h3>5️⃣ flex-wrap</h3>
+            <p>Позволяет элементам переноситься на новую строку, если не хватает места.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px; background: #333; padding: 10px;">
+                <div style="background: #c0392b; padding: 10px; width: 100px;">Элемент 1</div>
+                <div style="background: #c0392b; padding: 10px; width: 100px;">Элемент 2</div>
+                <div style="background: #c0392b; padding: 10px; width: 100px;">Элемент 3</div>
+                <div style="background: #c0392b; padding: 10px; width: 100px;">Элемент 4</div>
+                <div style="background: #c0392b; padding: 10px; width: 100px;">Элемент 5</div>
+            </div>
+        </div>
+
+        <!-- Свойства для flex-элементов: flex-grow, order -->
+        <div class="demo-box">
+            <h3>6️⃣ Свойства flex-элементов</h3>
+            <p><strong>flex-grow</strong> — определяет, как элемент будет растягиваться, если есть свободное место.</p>
+            <div style="display: flex; gap: 10px; background: #333; padding: 10px;">
+                <div style="background: #2c3e50; padding: 10px; flex-grow: 1;">Растущий</div>
+                <div style="background: #2c3e50; padding: 10px; flex-grow: 2;">Растущий в 2 раза больше</div>
+                <div style="background: #2c3e50; padding: 10px;">Фиксированный</div>
+            </div>
+            <p><strong>order</strong> — меняет порядок следования элементов.</p>
+            <div style="display: flex; gap: 10px; background: #333; padding: 10px;">
+                <div style="background: #8e44ad; padding: 10px; order: 3;">3-й порядок</div>
+                <div style="background: #8e44ad; padding: 10px; order: 1;">1-й порядок</div>
+                <div style="background: #8e44ad; padding: 10px; order: 2;">2-й порядок</div>
+            </div>
+        </div>
+
+        <div class="demo-box">
+            <h3>📌 Шпаргалка по Flexbox (для себя)</h3>
+            <ul>
+                <li><code>display: flex;</code> — включает Flexbox</li>
+                <li><code>flex-direction: row | column | row-reverse | column-reverse</code> — направление оси</li>
+                <li><code>justify-content: flex-start | center | space-between | space-around | space-evenly</code> — выравнивание по главной оси</li>
+                <li><code>align-items: stretch | center | flex-start | flex-end</code> — выравнивание по поперечной оси</li>
+                <li><code>flex-wrap: wrap | nowrap</code> — перенос строк</li>
+                <li><code>gap: 10px;</code> — расстояние между элементами</li>
+                <li><code>flex-grow: число</code> — растяжение элемента</li>
+                <li><code>order: число</code> — порядок отображения</li>
+            </ul>
+            <p>🎮 <strong>Игра Flexbox Froggy:</strong> пройдена 24/24 уровней (изучены все свойства). <br>💡 <em>Шпаргалка сохранена, все свойства отработаны на практике выше.</em></p>
+        </div>
+    </section>
+
+    <!-- ================================================
+         ЧАСТЬ 3. ИТОГОВЫЙ МАКЕТ (сетка на Flexbox)
+    ================================================ -->
+    <section>
+        <h2>🏗️ 3. Вёрстка макета (модульная сетка на Flexbox)</h2>
+        <p>Современный макет с шапкой, главным контентом и карточками. Полностью адаптивная сетка на Flexbox.</p>
+
+        <!-- ШАПКА -->
+        <div style="background: #1a1a2e; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+            <div style="background: #0f0f1a; padding: 20px; text-align: center; border-bottom: 2px solid #00ff88;">
+                <h1 style="margin: 0; color: #00ff88;">Мой сайт</h1>
+                <p>Добро пожаловать! Это макет на Flexbox</p>
+            </div>
+
+            <!-- ГЛАВНАЯ СЕТКА (2 колонки) -->
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 20px;">
+                <!-- ОСНОВНОЙ КОНТЕНТ (70% ширины) -->
+                <div style="flex: 2; min-width: 250px; background: #252535; border-radius: 12px; padding: 20px;">
+                    <h3>Основная статья</h3>
+                    <p>Это главный блок контента. Внутри может быть текст, изображения или другая информация. Сетка построена на свойстве <code>flex: 2</code>, что означает: занимает в 2 раза больше места, чем боковая панель.</p>
+                    <p>Flexbox идеально подходит для создания адаптивных макетов без использования сложных расчётов.</p>
+                </div>
+
+                <!-- САЙДБАР (30% ширины) -->
+                <div style="flex: 1; min-width: 200px; background: #252535; border-radius: 12px; padding: 20px;">
+                    <h3>Боковая панель</h3>
+                    <ul style="margin: 0; padding-left: 20px;">
+                        <li>📌 Интересный факт</li>
+                        <li>📌 Полезная ссылка</li>
+                        <li>📌 Контакты</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- КАРТОЧКИ (сетка из 3 колонок) -->
+            <div style="padding: 0 20px 20px 20px;">
+                <h3 style="color: #00ff88;">Наши услуги</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+                    <div style="flex: 1; min-width: 200px; background: #1a1a2e; border-radius: 12px; padding: 15px; text-align: center; border: 1px solid #333;">
+                        <div style="font-size: 40px;">🎨</div>
+                        <h4>Дизайн</h4>
+                        <p>Создаём красивые интерфейсы.</p>
+                    </div>
+                    <div style="flex: 1; min-width: 200px; background: #1a1a2e; border-radius: 12px; padding: 15px; text-align: center; border: 1px solid #333;">
+                        <div style="font-size: 40px;">💻</div>
+                        <h4>Разработка</h4>
+                        <p>Пишем чистый и понятный код.</p>
+                    </div>
+                    <div style="flex: 1; min-width: 200px; background: #1a1a2e; border-radius: 12px; padding: 15px; text-align: center; border: 1px solid #333;">
+                        <div style="font-size: 40px;">🚀</div>
+                        <h4>SEO</h4>
+                        <p>Продвигаем сайты в топ.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ФУТЕР -->
+            <div style="background: #0f0f1a; text-align: center; padding: 15px; margin-top: 20px; border-top: 1px solid #333;">
+                <p>© 2026 | Лабораторная работа №5 | Блочная модель и Flexbox</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>✅ Лабораторная работа выполнена. Изучены блочная модель и все основные свойства Flexbox.</p>
+        <p>🎮 Flexbox Froggy пройдена | 📐 Блочная модель отработана | 🧩 Макет свёрстан на Flexbox</p>
+    </footer>
+</div>
+</body>
+</html>
