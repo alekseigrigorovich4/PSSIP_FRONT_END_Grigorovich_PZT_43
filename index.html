@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница | Все лабораторные работы</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a2e;
+            color: #e0e0e0;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #00ff88;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+        }
+
+        .lab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .lab-card {
+            background: #1e1e2e;
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid #00ff88;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .lab-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,255,136,0.2);
+        }
+
+        .lab-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #00ff88;
+            margin-bottom: 10px;
+        }
+
+        .lab-desc {
+            font-size: 0.85rem;
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        .lab-path {
+            font-size: 0.75rem;
+            background: #0a0a1a;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-family: monospace;
+            margin-bottom: 15px;
+            color: #aaa;
+            word-break: break-all;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #00ff88;
+            color: #0a0a2e;
+            padding: 6px 16px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.8rem;
+            transition: 0.2s;
+            margin-right: 8px;
+            margin-bottom: 5px;
+        }
+
+        .btn:hover {
+            background: #00cc66;
+            transform: scale(1.02);
+        }
+
+        .btn-small {
+            background: #2a2a3a;
+            color: #00ff88;
+            border: 1px solid #00ff88;
+        }
+
+        .btn-small:hover {
+            background: #00ff88;
+            color: #0a0a2e;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #666;
+            font-size: 0.8rem;
+        }
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #00ff88;
+            color: #0a0a2e;
+            padding: 6px 16px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.75rem;
+            transition: 0.2s;
+            cursor: pointer;
+            text-align: center;
+            min-width: 70px;          
+            line-height: 1.2;
+        }
+        .btn:hover {
+            background: #00cc66;
+            transform: scale(1.02);
+        }
+
+        .btn:active {
+            transform: scale(0.98);   
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📚 Все лабораторные работы</h1>
+    <div class="subtitle">FrontEnd</div>
+
+    <div class="lab-grid">
+
+        <!-- ЛР1-4 -->
+        <div class="lab-card">
+            <div class="lab-title">📄 Лабораторные №1-4</div>
+            <div class="lab-desc">HTML + CSS: блочная модель, Flexbox, Grid, адаптивность</div>
+            <div class="lab-path">📁 Папка: <code>ЛР1-4-СДАНО</code></div>
+            <a href="ЛР1-4-СДАНО/index.html" class="btn">Открыть →</a>
+        </div>
+
+        <!-- ЛР5 -->
+        <div class="lab-card">
+        <div class="lab-title">🎨 Лабораторная №5</div>
+        <div class="lab-desc">Фиксированная, резиновая, адаптивная вёрстка</div>
+        <div class="lab-path">📁 Папка: <code>ЛР5-СДАНО</code><br>📄 Файлы: <code>index1.html, index2.html, index3.html</code></div>
+        <div class="btn-group">
+            <a href="ЛР5-СДАНО/index1.html" class="btn">Фикс.</a>
+            <a href="ЛР5-СДАНО/index2.html" class="btn">Резин.</a>
+            <a href="ЛР5-СДАНО/index3.html" class="btn">Адапт.</a>
+        </div>
+        </div>
+
+        <!-- ЛР6 -->
+        <div class="lab-card">
+            <div class="lab-title">🧩 Лабораторная №6</div>
+            <div class="lab-desc">Grid Layout — сложные сетки, области, позиционирование</div>
+            <div class="lab-path">📁 Папка: <code>ЛР6-СДАНО</code><br>📄 Файл: <code>index.html</code></div>
+            <a href="ЛР6-СДАНО/index.html" class="btn">Открыть →</a>
+        </div>
+
+        <!-- ЛР7 -->
+        <div class="lab-card">
+            <div class="lab-title">🐕 Лабораторная №7</div>
+            <div class="lab-desc">Bootstrap: адаптивная сетка, карусель, модалки, аккордеон, тосты</div>
+            <div class="lab-path">📁 Папка: <code>ЛР7-СДАНО</code><br>📄 Файл: <code>index.html</code></div>
+            <a href="ЛР7-СДАНО/index.html" class="btn">Открыть →</a>
+        </div>
+
+        <!-- ЛР8 (form + microgrid) -->
+        <div class="lab-card">
+            <div class="lab-title">⚙️ Лабораторная №8</div>
+            <div class="lab-desc">Пользовательская форма + микросетка (Grid/Flexbox)</div>
+            <div class="lab-path">📁 Папка: <code>ЛР8-СДАНО</code><br>📄 Внутри: <code>form/</code> и <code>microgrid/</code></div>
+            <a href="ЛР8-СДАНО/form/index.html" class="btn">📝 Форма</a>
+            <a href="ЛР8-СДАНО/microgrid/index.html" class="btn">🖼️ Микросетка</a>
+        </div>
+
+        <!-- ЛР9 (TASK3 + task1.html + task2.html) -->
+        <div class="lab-card">
+            <div class="lab-title">🎯 Лабораторная №9</div>
+            <div class="lab-desc">Bootstrap виджеты + дополнительные задания</div>
+            <div class="lab-path">📁 Папка: <code>ЛР9-СДАНО</code><br>📄 Файлы: <code>task1.html, task2.html, TASK3</code></div>
+            <a href="ЛР9-СДАНО/task1.html" class="btn">📄 task1.html</a>
+            <a href="ЛР9-СДАНО/task2.html" class="btn">📄 task2.html</a>
+            <a href="ЛР9-СДАНО/TASK3/task3.html" class="btn">📄 task3.html</a>
+        </div>
+
+        <!-- ЛР10-11-12 -->
+        <div class="lab-card">
+            <div class="lab-title">🐘 Лабораторные №10-11-12</div>
+            <div class="lab-desc">PHP: сессии, куки, работа с файлами, отправка почты (PHPMailer)</div>
+            <div class="lab-path">📁 Папка: <code>ЛР10_11_12-СДАНО</code><br>📄 Файл: <code>index.html</code></div>
+            <a href="ЛР10_11_12-СДАНО/index.html" class="btn">Открыть →</a>
+        </div>
+
+    </div>
+
+    <footer>
+        ✅ Все лабораторные сданы<br>
+    </footer>
+</div>
+</body>
+</html>
