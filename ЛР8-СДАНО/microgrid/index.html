@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вариант 4 - Микросетка</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="product-card">
+            <!-- ЛЕВАЯ ЧАСТЬ — ТЕКСТ ПРИЖАТ К ЛЕВОМУ КРАЮ -->
+            <div class="product-left">
+                <div class="left-content">
+                    <div class="left-title">AIR STRUCTURE 19</div>
+                    <div class="left-desc">
+                        Dynamic Support and Nike Zoom A<br>
+                        come together for a more support<br>
+                        with high-speed responsiveness.
+                    </div>
+                    <div class="left-price">12,995</div>
+                    <div class="left-delivery">
+                        EMI starts from ₹34 + Rs.100 Delivery
+                    </div>
+                </div>
+            </div>
+            <div class="product-right">
+                <div class="product-header">
+                    <div class="product-title">AIR STRUCTURE 19</div>
+                    <div class="product-badge">NEW</div>
+                </div>
+                <div class="rating">
+                    <span>★</span><span>★</span><span>★</span><span>☆</span><span>☆</span>
+                </div>
+                
+                <div class="tabs">
+                    <span class="tab active">DESCRIPTION</span>
+                    <span class="tab">DETAILS</span>
+                    <span class="tab">REVIEWS</span>
+                    <span class="tab">SIZE & FIT</span>
+                </div>
+                
+                <div class="description">
+                    Dynamic Support and Nike Zoom Air come together for a more supportive feel with high-speed responsiveness.
+                </div>
+                <div class="size-row">
+                    <div class="size-label">SIZE</div>
+                    <div class="size-buttons">
+                        <span data-size="7">7</span>
+                        <span data-size="8">8</span>
+                        <span data-size="9">9</span>
+                        <span data-size="10">10</span>
+                        <span data-size="11">11</span>
+                    </div>
+                    <div class="selected-value" id="selectedSize">Выбран размер: 7</div>
+                </div>
+                <div class="color-row">
+                    <div class="color-label">COLOUR</div>
+                    <div class="color-dots">
+                        <div class="dot" data-color="blue" style="background: #4a90e2;"></div>
+                        <div class="dot" data-color="red" style="background: #e74c3c;"></div>
+                        <div class="dot" data-color="yellow" style="background: #f1c40f;"></div>
+                        <div class="dot" data-color="black" style="background: #1a1a1a;"></div>
+                    </div>
+                    <div class="selected-value" id="selectedColor">Выбран цвет: blue</div>
+                </div>
+                <div class="actions">
+                    <button class="btn-cart">ADD TO CART</button>
+                    <button class="btn-wishlist">WISHLIST</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+            });
+        });
+        
+        const sizeButtons = document.querySelectorAll('.size-buttons span');
+        const selectedSizeSpan = document.getElementById('selectedSize');
+        document.querySelector('.size-buttons span[data-size="7"]').classList.add('active');
+        sizeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                sizeButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                selectedSizeSpan.textContent = `Выбран размер: ${btn.dataset.size}`;
+            });
+        });
+
+        const colorDots = document.querySelectorAll('.dot');
+        const selectedColorSpan = document.getElementById('selectedColor');
+        document.querySelector('.dot[data-color="blue"]').classList.add('active');
+        colorDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                colorDots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+                selectedColorSpan.textContent = `Выбран цвет: ${dot.dataset.color}`;
+            });
+        });
+    </script>
+</body>
+</html>
