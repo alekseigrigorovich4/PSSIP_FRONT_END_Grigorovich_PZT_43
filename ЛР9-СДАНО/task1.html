@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>4 способа внедрения JS</title>
+    
+    <!-- СПОСОБ 1: Внешний файл (подключается через src) -->
+    <script src="script.js"></script>
+    
+    <!-- СПОСОБ 2: Внутренний скрипт в <head> -->
+    <script>
+        console.log("Способ 2: Внутренний скрипт в <head>");
+    </script>
+</head>
+<body>
+    <h1>4 способа внедрения JavaScript</h1>
+    
+    <!-- СПОСОБ 3: Внутренний скрипт в <body> -->
+    <script>
+        console.log("Способ 3: Внутренний скрипт в <body>");
+        document.write("<p>Скрипт в body вывел этот текст</p>");
+    </script>
+    
+    <!-- СПОСОБ 4: Внутритеговой (inline) -->
+    <button onclick="alert('Способ 4: Внутритеговой JS')">Нажми меня</button>
+    
+    <p>Открой консоль браузера (F12), чтобы увидеть все сообщения.</p>
+</body>
+</html>
