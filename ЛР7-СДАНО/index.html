@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адаптивная вёрстка - Форма + Карточка товара</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            padding: 20px;
+        }
+        .adaptive {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            background: white;
+        }
+        .header, .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .nav {
+            background: #27ae60;
+            text-align: center;
+            padding: 15px;
+        }
+        .nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .block {
+            background: #ecf0f1;
+            text-align: center;
+            padding: 60px 0;
+            border: 1px solid #bdc3c7;
+            box-sizing: border-box;
+        }
+
+        /* По умолчанию (десктоп > 1024px) — 3 колонки */
+        .block {
+            width: 33.333%;
+        }
+
+        /* Планшет (768px - 1024px) — 2 колонки */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .block {
+                width: 50%;
+            }
+        }
+
+        /* Телефон (до 768px) — 1 колонка */
+        @media (max-width: 768px) {
+            .block {
+                width: 100%;
+            }
+        }
+
+        /* Стиль для вставки изображения */
+        .image-inside {
+            margin: -60px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            min-height: 200px;
+        }
+        
+        .image-inside img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* ===== СТИЛИ ДЛЯ ФОРМЫ (вставлены в блок) ===== */
+        .form-inside {
+            margin: -60px 0;
+            background: transparent;
+        }
+        
+        .form-inside * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .form-inside {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .form-inside .background-img {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 80px;
+            height: 80px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f1c40f"/><circle cx="50" cy="50" r="30" fill="%23e67e22"/></svg>');
+            background-size: cover;
+            background-position: center;
+            border-radius: 16px;
+            opacity: 0.9;
+            z-index: 0;
+        }
+        
+        .form-inside .form-container {
+            max-width: 100%;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .form-inside .title-block {
+            margin-bottom: 16px;
+        }
+        
+        .form-inside .title-block h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c3e50;
+            text-align: left;
+            letter-spacing: -0.5px;
+        }
+        
+        .form-inside .form-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-inside .form-card h3 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .form-inside .form-group {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            gap: 12px;
+        }
+        
+        .form-inside .form-group label {
+            width: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            padding-top: 10px;
+            flex-shrink: 0;
+        }
+        
+        .form-inside .form-group label span {
+            color: #e53935;
+        }
+        
+        .form-inside .form-group input,
+        .form-inside .form-group textarea {
+            flex: 1;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+        
+        .form-inside .form-group input:focus,
+        .form-inside .form-group textarea:focus {
+            outline: none;
+            border-color: #1a73e8;
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+        }
+        
+        .form-inside .submit-btn {
+            background: white;
+            color: #1a73e8;
+            border: 2px solid #1a73e8;
+            padding: 12px 20px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 40px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.2s;
+            margin-top: 8px;
+        }
+        
+        .form-inside .submit-btn:hover {
+            background: #1a73e8;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ===== СТИЛИ ДЛЯ MICROGRID (карточка товара) ===== */
+        .microgrid-inside {
+            margin: -60px 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .microgrid-inside * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .microgrid-inside .product-card {
+            display: flex;
+            flex-wrap: wrap;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+        
+        .microgrid-inside .product-left {
+            flex: 1;
+            min-width: 180px;
+            background: linear-gradient(135deg, #aa250b, #d8971d);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 25px 15px;
+        }
+        
+        .microgrid-inside .left-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            color: white;
+        }
+        
+        .microgrid-inside .left-title {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            text-align: left;
+        }
+        
+        .microgrid-inside .left-desc {
+            font-size: 10px;
+            line-height: 1.4;
+            margin-bottom: auto;
+            text-align: left;
+        }
+        
+        .microgrid-inside .left-price {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+        
+        .microgrid-inside .left-delivery {
+            font-size: 9px;
+            opacity: 0.8;
+            text-align: center;
+        }
+        
+        .microgrid-inside .product-right {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .microgrid-inside .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .microgrid-inside .product-title {
+            font-size: 20px;
+            font-weight: 700;
+        }
+        
+        .microgrid-inside .product-badge {
+            background: #e28513;
+            color: white;
+            padding: 3px 10px;
+            font-size: 11px;
+            font-weight: 600;
+            border-radius: 20px;
+        }
+        
+        .microgrid-inside .rating {
+            font-size: 18px;
+            color: #ccc;
+        }
+        
+        .microgrid-inside .rating span:nth-child(-n+3) {
+            color: #1a1a1a;
+        }
+        
+        .microgrid-inside .tabs {
+            display: flex;
+            gap: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 6px;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+        }
+        
+        .microgrid-inside .tab {
+            font-size: 11px;
+            font-weight: 600;
+            color: #aaa;
+            cursor: pointer;
+        }
+        
+        .microgrid-inside .tab.active {
+            color: #1a73e8;
+            border-bottom: 2px solid #1a73e8;
+            padding-bottom: 6px;
+            margin-bottom: -7px;
+        }
+        
+        .microgrid-inside .description {
+            font-size: 12px;
+            line-height: 1.4;
+            color: #555;
+            text-align: left;
+        }
+        
+        .microgrid-inside .size-label,
+        .microgrid-inside .color-label {
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+        
+        .microgrid-inside .size-buttons {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+        
+        .microgrid-inside .size-buttons span {
+            flex: 1;
+            text-align: center;
+            padding: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 12px;
+            cursor: pointer;
+            background: white;
+        }
+        
+        .microgrid-inside .size-buttons span.active {
+            background: #1a73e8;
+            color: white;
+            border-color: #1a73e8;
+        }
+        
+        .microgrid-inside .color-dots {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+        
+        .microgrid-inside .dot {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .microgrid-inside .dot.active {
+            border-color: #1a73e8;
+            box-shadow: 0 0 0 2px white, 0 0 0 4px #1a73e8;
+        }
+        
+        .microgrid-inside .selected-value {
+            font-size: 11px;
+            color: #1a73e8;
+            margin-top: 4px;
+            font-weight: 500;
+            text-align: left;
+        }
+        
+        .microgrid-inside .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 6px;
+        }
+        
+        .microgrid-inside .btn-cart {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 12px;
+            cursor: pointer;
+            flex: 1;
+        }
+        
+        .microgrid-inside .btn-wishlist {
+            background: none;
+            border: 1px solid #ddd;
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 12px;
+            cursor: pointer;
+            background: white;
+            flex: 1;
+        }
+        
+        @media (max-width: 550px) {
+            .form-inside .form-group {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .form-inside .form-group label {
+                width: auto;
+                padding-top: 0;
+            }
+            .microgrid-inside .product-card {
+                flex-direction: column;
+            }
+            .microgrid-inside .actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="adaptive">
+        <div class="header">Шапка (логотип)</div>
+        <div class="nav">
+            <a href="#">Главная</a>
+            <a href="#">О нас</a>
+            <a href="#">Услуги</a>
+            <a href="#">Портфолио</a>
+            <a href="#">Блог</a>
+            <a href="#">Контакты</a>
+        </div>
+        <div class="row">
+            <div class="block">
+                <!-- ФОРМА ЗАКАЗА -->
+                <div class="form-inside">
+                    <div class="background-img"></div>
+                    <div class="form-container">
+                        <div class="title-block">
+                            <h1>Оформление заказа</h1>
+                        </div>
+                        <div class="form-card">
+                            <h3>Форма заказа</h3>
+                            <form>
+                                <div class="form-group">
+                                    <label>ФИО <span>*</span></label>
+                                    <input type="text" placeholder="Иванов Иван Иванович">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email <span>*</span></label>
+                                    <input type="email" placeholder="example@mail.ru">
+                                </div>
+                                <div class="form-group">
+                                    <label>Телефон <span>*</span></label>
+                                    <input type="tel" placeholder="+375 29 123-45-67">
+                                </div>
+                                <div class="form-group">
+                                    <label>Комментарии к заказу</label>
+                                    <textarea rows="3" placeholder="Ваш комментарий"></textarea>
+                                </div>
+                                <button type="submit" class="submit-btn">Отправить</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="block">
+                <!-- MICROGRID (карточка товара) -->
+                <div class="microgrid-inside">
+                    <div class="product-card">
+                        <div class="product-left">
+                            <div class="left-content">
+                                <div class="left-title">AIR STRUCTURE 19</div>
+                                <div class="left-desc">
+                                    Dynamic Support and Nike Zoom A<br>
+                                    come together for a more support<br>
+                                    with high-speed responsiveness.
+                                </div>
+                                <div class="left-price">12,995</div>
+                                <div class="left-delivery">
+                                    EMI starts from ₹34 + Rs.100 Delivery
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-right">
+                            <div class="product-header">
+                                <div class="product-title">AIR STRUCTURE 19</div>
+                                <div class="product-badge">NEW</div>
+                            </div>
+                            <div class="rating">
+                                <span>★</span><span>★</span><span>★</span><span>☆</span><span>☆</span>
+                            </div>
+                            <div class="tabs">
+                                <span class="tab active">DESCRIPTION</span>
+                                <span class="tab">DETAILS</span>
+                                <span class="tab">REVIEWS</span>
+                                <span class="tab">SIZE & FIT</span>
+                            </div>
+                            <div class="description">
+                                Dynamic Support and Nike Zoom Air come together for a more supportive feel with high-speed responsiveness.
+                            </div>
+                            <div class="size-row">
+                                <div class="size-label">SIZE</div>
+                                <div class="size-buttons">
+                                    <span data-size="7">7</span>
+                                    <span data-size="8">8</span>
+                                    <span data-size="9">9</span>
+                                    <span data-size="10">10</span>
+                                    <span data-size="11">11</span>
+                                </div>
+                                <div class="selected-value" id="selectedSize">Выбран размер: 7</div>
+                            </div>
+                            <div class="color-row">
+                                <div class="color-label">COLOUR</div>
+                                <div class="color-dots">
+                                    <div class="dot" data-color="blue" style="background: #4a90e2;"></div>
+                                    <div class="dot" data-color="red" style="background: #e74c3c;"></div>
+                                    <div class="dot" data-color="yellow" style="background: #f1c40f;"></div>
+                                    <div class="dot" data-color="black" style="background: #1a1a1a;"></div>
+                                </div>
+                                <div class="selected-value" id="selectedColor">Выбран цвет: blue</div>
+                            </div>
+                            <div class="actions">
+                                <button class="btn-cart">ADD TO CART</button>
+                                <button class="btn-wishlist">WISHLIST</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="block">Основы алгоритмизации и программирования1 п/гр/Арифметико-логические основы вычислительной техники 1 п/гр</div>
+        </div>
+        <div class="row">
+            <div class="block">Основы алгоритмизации и программирования1 п/гр/Арифметико-логические основы вычислительной техники 1 п/гр</div>
+            <div class="block">3</div>
+            <div class="block">
+                <!-- ИЗОБРАЖЕНИЕ ауди.jpg -->
+                <div class="image-inside">
+                    <img src="ауди.jpg" alt="Audi" onerror="this.src='https://via.placeholder.com/300x200?text=Audi+Image+Not+Found'">
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>© 2026 Адаптивная вёрстка</p>
+            <div class="social">
+                <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Скрипт для microgrid (работа с вкладками, размерами, цветами)
+        const tabs = document.querySelectorAll('.microgrid-inside .tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+            });
+        });
+        
+        const sizeButtons = document.querySelectorAll('.microgrid-inside .size-buttons span');
+        const selectedSizeSpan = document.getElementById('selectedSize');
+        if (sizeButtons.length) {
+            document.querySelector('.microgrid-inside .size-buttons span[data-size="7"]').classList.add('active');
+            sizeButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    sizeButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    selectedSizeSpan.textContent = `Выбран размер: ${btn.dataset.size}`;
+                });
+            });
+        }
+
+        const colorDots = document.querySelectorAll('.microgrid-inside .dot');
+        const selectedColorSpan = document.getElementById('selectedColor');
+        if (colorDots.length) {
+            document.querySelector('.microgrid-inside .dot[data-color="blue"]').classList.add('active');
+            colorDots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    colorDots.forEach(d => d.classList.remove('active'));
+                    dot.classList.add('active');
+                    selectedColorSpan.textContent = `Выбран цвет: ${dot.dataset.color}`;
+                });
+            });
+        }
+    </script>
+</body>
+</html>
