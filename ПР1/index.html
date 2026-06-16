@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="ХОД Future Academy">
+    <meta name="description" content="Образовательная платформа ХОД Future Academy - актуальные знания для новичков и профессионалов">
+    <meta name="keywords" content="обучение, IT, курсы, программирование, дизайн, робототехника, web-разработка, шахматы, блогинг">
+    
+    <title>ХОД Future Academy — Итоговый проект</title>
+    
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- ========== ШАПКА САЙТА ========== -->
+    <header class="main-header">
+        <div class="container header-flex">
+            <a href="/" class="logo-group" style="text-decoration: none; color: inherit;">
+                <div class="logo-symbols">
+                    <span class="s-x">✕</span>
+                    <span class="s-t">▲</span>
+                    <span class="s-c">●</span>
+                </div>
+                <div class="logo-name">FUTURE<br>ACADEMY</div>
+            </a>
+            
+            <nav class="nav-menu">
+                <a href="#"><i data-lucide="menu"></i> Все курсы</a>
+                <a href="#">Мероприятия</a>
+                <a href="#">Базы знаний</a>
+                <a href="#">Карьера</a>
+            </nav>
+
+            <button class="hamburger" id="hamburgerBtn">☰</button>
+
+            <div class="header-right">
+                <div class="city-select">
+                    <i data-lucide="map-pin"></i>
+                    <span>Нижний Новгород</span>
+                    <i data-lucide="chevron-down"></i>
+                </div>
+                <a href="tel:88009503398" class="header-phone">8 800 950-33-98</a>
+                <button class="btn-login"><i data-lucide="user"></i> Войти</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== ГЛАВНЫЙ БЛОК (HERO) - НА ВСЮ ШИРИНУ, 50/50 ========== -->
+    <section class="hero">
+        <div class="hero-grid">
+            <div class="hero-text">
+                <h1>Образовательная платформа</h1>
+                <h2>ХОД Future Academy</h2>
+                <p>Актуальные знания для новичков и профессионалов</p>
+            </div>
+            <div class="hero-visual"></div>
+        </div>
+    </section>
+
+    <!-- ========== ВЫБОР НАПРАВЛЕНИЙ ========== -->
+    <section class="course-selection container">
+        <div class="selection-wrap">
+            <div class="owl-box">
+                <div class="bubble">
+                    <p class="b-title">Кем вы хотите стать?</p>
+                    <p>Пора найти себя и выбрать подходящий курс :)</p>
+                    <p class="b-footer">Удачи!</p>
+                </div>
+                <div class="owl-img">🦉</div>
+            </div>
+            <div class="filters">
+                <div class="age-tabs">
+                    <div class="tab active">Дети <span>8 — 14 лет</span></div>
+                    <div class="tab">Подростки <span>14 — 18 лет</span></div>
+                    <div class="tab">Взрослые <span>18 — ∞</span></div>
+                </div>
+                <div class="tags">
+                    <span>Робототехника</span>
+                    <span>Создание игр</span>
+                    <span>Web-разработка</span>
+                    <span>Мультимедиа</span>
+                    <span>Шахматы</span>
+                    <span>3D-моделирование и дизайн</span>
+                    <span class="active-tag">Английский язык</span>
+                    <span>Блогинг</span>
+                    <span>Soft skills</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== СТАТИСТИКА И ВИДЕО ========== -->
+    <section class="stats container">
+        <div class="video-box">
+            <img src="https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?q=80&w=1000" alt="Видео об академии" title="Видео презентация">
+            <div class="play-trigger">▶</div>
+        </div>
+        <p class="stats-lead">Актуальные знания от признанных экспертов рынка для новичков и практикующих специалистов.</p>
+        <div class="numbers-grid">
+            <div class="n-item"><div class="grad-text">600</div><p>курсов</p></div>
+            <div class="n-item"><div class="grad-text">82</div><p>ведущих преподавателя</p></div>
+            <div class="n-item"><div class="grad-text">14 795</div><p>выпускников</p></div>
+        </div>
+    </section>
+
+    <!-- ========== ДЕНЬ ОТКРЫТЫХ ДВЕРЕЙ И КАРТОЧКИ ========== -->
+    <section class="events container">
+        <div class="orange-card">
+            <div class="date">25 <span>ноября</span></div>
+            <div class="info">
+                <h3>День открытых дверей</h3>
+                <p>Приглашаем всех желающих на бесплатную экскурсию в мир востребованных профессий и полезных навыков</p>
+            </div>
+            <button class="btn-orange">Записаться ›</button>
+        </div>
+        
+        <div class="cards-mosaic">
+            <div class="c-item c-blue">
+                <i>💻</i>
+                <h4>Программы обучения</h4>
+                <p>В списке наших курсов вы сможете найти профессию и занятие по душе, изучить новое и получить практические знания.</p>
+                <button class="c-link">Подробнее ›</button>
+            </div>
+            <div class="c-sub">
+                <div class="c-item c-green"><i>📰</i> <h4>Новости Академии</h4></div>
+                <div class="c-item c-pink"><i>🌐</i> <h4>Мир IT</h4></div>
+                <div class="c-item c-yellow c-wide">
+                    <i>🎯</i>
+                    <div>
+                        <h4>Попробуй!</h4>
+                        <p>Пройдите тест и узнайте свои способности в сфере информационных технологий</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ОТЗЫВЫ (с отступом сверху) ========== -->
+    <section class="reviews">
+        <div class="container">
+            <h2 class="title-white">Отзывы наших студентов</h2>
+            <div class="reviews-row">
+                <div class="r-card">
+                    <div class="r-head">
+                        <div class="r-ava">👤</div>
+                        <div><strong>Имя Фамилия</strong><p>Студент курса «WEB-разработчик»</p></div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut feugiat nisl at augue dapibus, id tristique lorem placerat!</p>
+                    <div class="r-star">⭐ 4,87 / 5</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ДОБРО ПОЖАЛОВАТЬ ========== -->
+    <section class="welcome container">
+        <h2 class="section-title">Добро пожаловать в Академию будущего ХОД</h2>
+        <div class="welcome-grid">
+            <div class="w-item"><i>⚙️</i><p>Передовой подход к образовательному процессу</p></div>
+            <div class="w-item"><i>📖</i><p>Непрерывное усовершенствование и пополнение базы курсов</p></div>
+            <div class="w-item"><i>👨‍🏫</i><p>Только практикующие преподаватели</p></div>
+            <div class="w-item"><i>👨‍💼</i><p>Сопровождение на всех этапах. От начала обучения до трудоустройства</p></div>
+        </div>
+    </section>
+
+    <!-- ========== ФОРМА ПОМОЩИ ========== -->
+    <section class="help container">
+        <div class="help-card">
+            <div class="help-owl">🦉</div>
+            <div class="help-content">
+                <h3>Помочь с выбором?</h3>
+                <p>Оставьте заявку и наши специалисты свяжутся с вами, ответят на все вопросы и подберут подходящий вариант обучения.</p>
+            </div>
+            <form class="help-form">
+                <input type="text" placeholder="Ваше имя" required>
+                <div class="f-row">
+                    <input type="tel" placeholder="Ваш телефон" required>
+                    <input type="email" placeholder="Ваш e-mail" required>
+                </div>
+                <button type="submit" class="btn-submit">Отправить</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ========== ПОДВАЛ ========== -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="f-brand">
+                <div class="f-logo">ХОД <span>FUTURE ACADEMY</span></div>
+                <div class="f-contacts">
+                    <a href="tel:88009503398" class="f-phone">8 800 950-33-98</a>
+                    <p>г. Нижний Новгород, ул. Ленина, д. 50</p>
+                    <p>info@hodfutureacademy.ru</p>
+                </div>
+                <div class="f-social">
+                    <span>vk</span><span>fb</span><span>ig</span><span>yt</span><span>tg</span>
+                </div>
+                <p class="f-copy">© ХОД, Future Academy</p>
+            </div>
+
+            <div class="f-links">
+                <div class="f-col">
+                    <h5>Детям</h5>
+                    <p>Робототехника</p><p>Создание игр</p><p>Программирование</p><p>Мультимедиа</p><p>Soft skills</p><p>Шахматы</p><p>Блогинг</p>
+                </div>
+                <div class="f-col">
+                    <h5>Подросткам</h5>
+                    <p>Web-разработка</p><p>Прикладное программирование</p><p>Game Development</p><p>Soft skills</p><p>Блогинг</p>
+                </div>
+                <div class="f-col">
+                    <h5>Взрослым</h5>
+                    <p>Разработка ПО</p><p>Графический Дизайн</p><p>Тестировщик ПО</p><p>Интернет Маркетинг</p><p>Python–разработчик</p>
+                </div>
+                <div class="f-col">
+                    <h5>Информация</h5>
+                    <p>Об академии</p><p>Мероприятия</p><p>Новости</p><p>База знаний</p><p>Карьера</p><p>Контакты</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburgerBtn');
+        const navMenu = document.querySelector('.nav-menu');
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        document.querySelector('.help-form')?.addEventListener('submit', function(e) {
+            const inputs = this.querySelectorAll('input[required]');
+            let valid = true;
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    valid = false;
+                    input.style.border = '2px solid red';
+                } else {
+                    input.style.border = '';
+                }
+            });
+            if (!valid) {
+                e.preventDefault();
+                alert('Пожалуйста, заполните все обязательные поля');
+            }
+        });
+
+        lucide.createIcons();
+    </script>
+</body>
+</html>
